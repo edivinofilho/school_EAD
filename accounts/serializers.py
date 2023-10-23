@@ -4,13 +4,15 @@ from .models import Account
 
 
 class AccountSerializer(serializers.ModelSerializer):
-
-    email = serializers.CharField(max_length=100, validators=[
-        UniqueValidator(
-            queryset=Account.objects.all(),
-            message="user with this email already exists."
-        )
-    ])
+    email = serializers.CharField(
+        max_length=100,
+        validators=[
+            UniqueValidator(
+                queryset=Account.objects.all(),
+                message="user with this email already exists.",
+            )
+        ],
+    )
 
     class Meta:
         model = Account
@@ -25,3 +27,11 @@ class AccountSerializer(serializers.ModelSerializer):
             return Account.objects.create_superuser(**validated_data)
 
         return Account.objects.create_user(**validated_data)
+
+
+class AccountLoginSerializer(serializers.ModelSerializer):
+    username = serializers.CharField()
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        pass

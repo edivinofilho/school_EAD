@@ -4,21 +4,19 @@ from rest_framework.validators import UniqueValidator
 
 
 class CourseSerializer(serializers.ModelSerializer):
-
     name = serializers.CharField(
         max_length=100,
         validators=[
             UniqueValidator(
                 queryset=Course.objects.all(),
-                message="course with this name already exists."
+                message="course with this name already exists.",
             )
-        ])
+        ],
+    )
 
     class Meta:
         model = Course
-        fields = ["id", "name", "status", "start_date", "end_date",
-                  "instructor_id"]
-
+        fields = ["id", "name", "status", "start_date", "end_date", "instructor_id"]
 
     def create(self, validated_data):
         return Course.objects.create(**validated_data)
