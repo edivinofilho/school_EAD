@@ -17,9 +17,9 @@ class StudentCourse(models.Model):
         default=StudentCourseStatus.DEFAULT,
     )
 
-    course = models.ForeignKey(
-        "accounts.Account", on_delete=models.CASCADE, related_name="student_course"
-    )
     student = models.ForeignKey(
-        "courses.Course", on_delete=models.CASCADE, related_name="student_course"
+        "accounts.Account", on_delete=models.CASCADE, related_name="students_courses"
+    )
+    course = models.ForeignKey(
+        "courses.Course", on_delete=models.CASCADE, related_name="students_courses"
     )

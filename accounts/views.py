@@ -19,32 +19,3 @@ class AccountView(generics.CreateAPIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# class AccountLoginView(generics.CreateAPIView):
-#     queryset = Account.objects.all()
-#     serializer_class = AccountLoginSerializer
-
-#     def create(self, request, *args, **kwargs):
-#         serializer = self.get_serializer(data=request.data)
-        
-#         if serializer.is_valid():
-#             username = serializer.validated_data.get('username')
-#             password = serializer.validated_data.get('password')
-            
-#             user = authenticate(username=username, password=password)
-            
-#             if user is not None:
-#                 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-#                 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
-
-#                 payload = jwt_payload_handler(user)
-#                 token = jwt_encode_handler(payload)
-
-#                 is_admin = user.is_superuser
-
-#                 return Response({
-#                     'token': token,
-#                     'is_admin': is_admin,
-#                 }, status=status.HTTP_200_OK)
-
-#         return Response({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
