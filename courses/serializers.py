@@ -18,63 +18,64 @@ class CourseSerializer(serializers.ModelSerializer):
             )
         ],
     )
-    
+
     class Meta:
         model = Course
-        fields = ["id", "name", "status", "start_date", "end_date", "instructor", "contents", "students_courses"]
+        fields = [
+            "id",
+            "name",
+            "status",
+            "start_date",
+            "end_date",
+            "instructor",
+            "contents",
+            "students_courses",
+        ]
         extra_kwargs = {
-            "contents": {
-                "read_only": True
-            },
-            "students_courses": {
-                "read_only": True
-            }
+            "contents": {"read_only": True},
+            "students_courses": {"read_only": True},
         }
-
-    # def create(self, validated_data):
-    #     # instructor = validated_data.pop("instructor", None)  
-    #     course = Course.objects.create(**validated_data)
-        
-    #     course.contents = []
-    #     course.students_courses = []
-        
-    #     return course
-
 
     def update(self, instance, validated_data):
         return super().update(instance, validated_data)
 
+
 class CreateCourse(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ["id", "name", "status", "start_date", "end_date", "instructor", "contents", "students_courses"]
+        fields = [
+            "id",
+            "name",
+            "status",
+            "start_date",
+            "end_date",
+            "instructor",
+            "contents",
+            "students_courses",
+        ]
         extra_kwargs = {
-            "contents": {
-                "read_only": True
-            },
-            "students_courses": {
-                "read_only": True
-            }
+            "contents": {"read_only": True},
+            "students_courses": {"read_only": True},
         }
 
     name = serializers.CharField(
         max_length=100,
         validators=[
-        UniqueValidator(
-            queryset=Course.objects.all(),
-            message="course with this name already exists.",
-        )
-    ],
-)
-    
+            UniqueValidator(
+                queryset=Course.objects.all(),
+                message="course with this name already exists.",
+            )
+        ],
+    )
+
+
 class AddStudentCourse(serializers.ModelSerializer):
     students_courses = StudentCourseSerializer(many=True)
+
     class Meta:
         model = Course
-        fields = ["id", "name", "students_courses"] 
-        extra_kwargs = {
-            "name" : {"read_only": True}
-        }
+        fields = ["id", "name", "students_courses"]
+        extra_kwargs = {"name": {"read_only": True}}
 
     def update(self, instance, validated_data):
         students = []
@@ -88,6 +89,8 @@ class AddStudentCourse(serializers.ModelSerializer):
                 students.append(found)
 
         if not_found:
-            raise serializers.ValidationError({"detail":f"No active accounts was found: {', '.join(not_found)}."})
+            raise serializers.ValidationError(
+                {"detail": f"No active accounts was found: {', '.join(not_found)}."}
+            )
         instance.students.add(*students)
         return instance

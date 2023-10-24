@@ -2,6 +2,7 @@ from django.db import models
 from courses.models import Course
 import uuid
 
+
 class Content(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     name = models.CharField(max_length=150)
@@ -10,4 +11,4 @@ class Content(models.Model):
 
     course = models.ForeignKey(
         "courses.Course", on_delete=models.CASCADE, related_name="contents"
-)
+    )

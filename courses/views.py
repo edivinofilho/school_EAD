@@ -12,11 +12,12 @@ class CourseView(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CreateCourse
     permission_classes = [IsAdminOrReadOnly]
-    
+
     def get_queryset(self):
         if not self.request.user.is_superuser:
             return Course.objects.filter(students=self.request.user)
         return self.queryset.all()
+
 
 class CourseDetailVIew(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
@@ -30,12 +31,3 @@ class StudentCourseView(generics.RetrieveUpdateAPIView):
     serializer_class = AddStudentCourse
     lookup_url_kwarg = "course_id"
     permission_classes = [IsAdminUser]
-
-    # def perform_update(self, serializer):
-    #     course = get_object_or_404(Course, pk=self.kwargs["course_id"])
-    #     student = get_object_or_404(
-    #         Account, email=self.request.students_course.student_email)
-
-    #     serializer.save(course=course, student=student)
-
-    
