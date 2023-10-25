@@ -1,5 +1,5 @@
 from .models import Account
-from .serializers import AccountSerializer, AccountLoginSerializer
+from .serializers import AccountSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
