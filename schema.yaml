@@ -1,7 +1,9 @@
 openapi: 3.0.3
 info:
-  title: ''
-  version: 0.0.0
+  title: Kanvas API
+  version: 1.0.0
+  description: API Rest para o gerenciamento de cursos e aulas de uma escola de modalidade
+    EAD.
 paths:
   /api/accounts/:
     post:
@@ -79,6 +81,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -98,6 +101,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -129,6 +133,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -159,6 +164,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -175,6 +181,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -207,11 +214,13 @@ paths:
         name: content_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -231,11 +240,13 @@ paths:
         name: content_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -267,11 +278,13 @@ paths:
         name: content_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -302,11 +315,13 @@ paths:
         name: content_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -323,6 +338,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -342,6 +358,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -373,6 +390,7 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -404,11 +422,13 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: student_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -428,11 +448,13 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: student_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -464,11 +486,13 @@ paths:
         name: course_id
         schema:
           type: string
+          format: uuid
         required: true
       - in: path
         name: student_id
         schema:
           type: string
+          format: uuid
         required: true
       tags:
       - api
@@ -518,150 +542,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenObtainPair'
-          description: ''
-  /api/schema/:
-    get:
-      operationId: api_schema_retrieve
-      description: |-
-        OpenApi3 schema for this API. Format can be selected via content negotiation.
-
-        - YAML: application/vnd.oai.openapi
-        - JSON: application/vnd.oai.openapi+json
-      parameters:
-      - in: query
-        name: format
-        schema:
-          type: string
-          enum:
-          - json
-          - yaml
-      - in: query
-        name: lang
-        schema:
-          type: string
-          enum:
-          - af
-          - ar
-          - ar-dz
-          - ast
-          - az
-          - be
-          - bg
-          - bn
-          - br
-          - bs
-          - ca
-          - ckb
-          - cs
-          - cy
-          - da
-          - de
-          - dsb
-          - el
-          - en
-          - en-au
-          - en-gb
-          - eo
-          - es
-          - es-ar
-          - es-co
-          - es-mx
-          - es-ni
-          - es-ve
-          - et
-          - eu
-          - fa
-          - fi
-          - fr
-          - fy
-          - ga
-          - gd
-          - gl
-          - he
-          - hi
-          - hr
-          - hsb
-          - hu
-          - hy
-          - ia
-          - id
-          - ig
-          - io
-          - is
-          - it
-          - ja
-          - ka
-          - kab
-          - kk
-          - km
-          - kn
-          - ko
-          - ky
-          - lb
-          - lt
-          - lv
-          - mk
-          - ml
-          - mn
-          - mr
-          - ms
-          - my
-          - nb
-          - ne
-          - nl
-          - nn
-          - os
-          - pa
-          - pl
-          - pt
-          - pt-br
-          - ro
-          - ru
-          - sk
-          - sl
-          - sq
-          - sr
-          - sr-latn
-          - sv
-          - sw
-          - ta
-          - te
-          - tg
-          - th
-          - tk
-          - tr
-          - tt
-          - udm
-          - uk
-          - ur
-          - uz
-          - vi
-          - zh-hans
-          - zh-hant
-      tags:
-      - api
-      security:
-      - jwtAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/vnd.oai.openapi:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/yaml:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/vnd.oai.openapi+json:
-              schema:
-                type: object
-                additionalProperties: {}
-            application/json:
-              schema:
-                type: object
-                additionalProperties: {}
           description: ''
 components:
   schemas:
@@ -744,7 +624,7 @@ components:
           type: string
           maxLength: 100
         status:
-          $ref: '#/components/schemas/Status99bEnum'
+          $ref: '#/components/schemas/CourseStatus'
         start_date:
           type: string
           format: date
@@ -772,6 +652,16 @@ components:
       - name
       - start_date
       - students_courses
+    CourseStatus:
+      enum:
+      - not started
+      - in progress
+      - finished
+      type: string
+      description: |-
+        * `not started` - Default
+        * `in progress` - In Progress
+        * `finished` - Finished
     CreateCourse:
       type: object
       properties:
@@ -783,7 +673,7 @@ components:
           type: string
           maxLength: 100
         status:
-          $ref: '#/components/schemas/Status99bEnum'
+          $ref: '#/components/schemas/CourseStatus'
         start_date:
           type: string
           format: date
@@ -854,7 +744,7 @@ components:
           type: string
           maxLength: 100
         status:
-          $ref: '#/components/schemas/Status99bEnum'
+          $ref: '#/components/schemas/CourseStatus'
         start_date:
           type: string
           format: date
@@ -875,16 +765,6 @@ components:
           items:
             $ref: '#/components/schemas/StudentCourse'
           readOnly: true
-    Status99bEnum:
-      enum:
-      - not started
-      - in progress
-      - finished
-      type: string
-      description: |-
-        * `not started` - Default
-        * `in progress` - In Progress
-        * `finished` - Finished
     StudentCourse:
       type: object
       properties:
@@ -893,7 +773,7 @@ components:
           format: uuid
           readOnly: true
         status:
-          $ref: '#/components/schemas/StudentCourseStatusEnum'
+          $ref: '#/components/schemas/StudentCourseStatus'
         student_id:
           type: string
           format: uuid
@@ -910,7 +790,7 @@ components:
       - student_email
       - student_id
       - student_username
-    StudentCourseStatusEnum:
+    StudentCourseStatus:
       enum:
       - pending
       - accepted

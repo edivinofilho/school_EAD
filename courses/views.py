@@ -6,6 +6,7 @@ from .serializers import AddStudentCourse, CourseSerializer, CreateCourse
 from accounts.permissions import IsAdminOrReadOnly, IsAdminOrOwner, IsAdminUser
 from rest_framework import generics
 from django.shortcuts import get_object_or_404
+from drf_yasg.utils import swagger_auto_schema
 
 
 class CourseView(generics.ListCreateAPIView):

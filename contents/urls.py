@@ -3,9 +3,9 @@ from . import views
 
 
 urlpatterns = [
-    path("courses/<str:course_id>/contents/", views.ContentView.as_view()),
+    path("courses/<uuid:course_id>/contents/", views.ContentView.as_view()),
     path(
-        "courses/<str:course_id>/contents/<str:content_id>/",
+        "courses/<uuid:course_id>/contents/<uuid:content_id>/",
         views.ContentDetailView.as_view(),
     ),
 ]
