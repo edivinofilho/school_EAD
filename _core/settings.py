@@ -47,10 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "rest_framework.authtoken",
-    "rest_framework_jwt",
     "drf_spectacular",
-    "drf_yasg",
     "accounts",
     "contents",
     "courses",
@@ -77,9 +74,6 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
-AUTHENTICATION_BACKENDS = [
-    "django.contrib.auth.backends.ModelBackend",
-]
 
 TEMPLATES = [
     {

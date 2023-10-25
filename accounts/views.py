@@ -3,7 +3,6 @@ from .serializers import AccountSerializer
 from rest_framework import generics, status
 from rest_framework.response import Response
 from django.contrib.auth import authenticate
-from rest_framework_jwt.settings import api_settings
 
 
 class AccountView(generics.CreateAPIView):
